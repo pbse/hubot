@@ -1,3 +1,6 @@
+/*
+  Basic Logger
+ */
 const winston = require('winston');
 
 // Logger to Log Out Messages

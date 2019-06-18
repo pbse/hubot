@@ -2,6 +2,9 @@ const _ = require('lodash');
 const diff = require('deep-diff').diff;
 const util = require('util');
 
+/*
+  Find Difference between two objects
+ */
 const findDifference = (oldData, newData) => {
   if(_.isEqual(oldData, newData)) {
     return false;
@@ -30,6 +33,9 @@ const findDifference = (oldData, newData) => {
   return out;
 };
 
+/*
+  Convert Array of Arrays to JSON
+ */
 const createJSON = (data) => {
   const obj = {};
   obj.data = [];

@@ -1,3 +1,6 @@
+/*
+  DB Instance
+ */
 const Postgres = require('pg');
 const DATABASE_URL = process.env.DATABASE_URL;
 

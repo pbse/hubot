@@ -1,3 +1,7 @@
+/*
+  Start Client
+  Main logic resides here
+ */
 const _ = require('lodash');
 const {google} = require('googleapis');
 const {createJSON, findDifference} = require("../util/util");

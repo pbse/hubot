@@ -1,3 +1,7 @@
+/*
+  Google Sheet Instance
+  Creates the necessary auth required to query a sheet
+ */
 const {google} = require('googleapis');
 const readline = require('readline');
 const fs = require('fs');
