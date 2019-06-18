@@ -25,8 +25,8 @@ The Sheet ID is taken in Env file, Ideally it should be given as part of input f
 
 ### Nice to haves
 
-More Tests
-Use of TypeScript
+- More Tests
+- Use of TypeScript
 
 ### Demo
 
