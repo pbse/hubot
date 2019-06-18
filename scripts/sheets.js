@@ -15,7 +15,7 @@ const startSchedule = ({client, robot, res, auth}) => {
       .then(() => startClient({client, robot, res, auth}))
       .then(() => startSchedule({client, robot, res, auth}))
       .catch(err => logger.debug(err));
-  }, 300000)
+  }, 2000)
 };
 
 module.exports = function(robot) {
@@ -34,7 +34,8 @@ module.exports = function(robot) {
   robot.hear(/read sheet/i, (res) => {
     res.send("Ok, Starting to query google sheet. Will report for any change.");
     googleSheetClient.authorize()
-      .then(_boolData => startSchedule({client, robot, res, auth: googleSheetClient.oAuth2Client}))
-      .catch(err => logger.debug(err));
+      .then(_boolData => startClient({client, robot, res, auth: googleSheetClient.oAuth2Client}))
+      .then(()        => startSchedule({client, robot, res, auth: googleSheetClient.oAuth2Client}))
+      .catch(err      => logger.debug(err));
   });
 };

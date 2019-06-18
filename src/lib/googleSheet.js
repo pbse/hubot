@@ -5,6 +5,7 @@
 const {google} = require('googleapis');
 const readline = require('readline');
 const fs = require('fs');
+const {logger} = require("../util/logger");
 const TOKEN_PATH = process.env.TOKEN_PATH || 'token.json';
 const SCOPES = process.env.SCOPES || ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 
@@ -28,7 +29,7 @@ class GoogleSheet {
       access_type: 'offline',
       scope: SCOPES,
     });
-    console.log('Authorize this app by visiting this url:', authUrl);
+    logger.debug(`Authorize this app by visiting this url: ${authUrl}`);
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
@@ -41,8 +42,8 @@ class GoogleSheet {
           this.oAuth2Client.setCredentials(token);
           // Store the token to disk for later program executions
           fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
-            if (err) return console.error(err);
-            console.log('Token stored to', TOKEN_PATH);
+            if (err) return logger.error(err);
+            logger.debug(`Token stored to ${TOKEN_PATH}`);
           });
           resolve(true);
         });
