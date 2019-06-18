@@ -2,6 +2,17 @@
 
 Create a hubot using Node that connects into a Google sheet every 5 minutes and detects changes to syncs to a Postgres instance. Once the sync is complete it should message on Slack any updates that were made.
 
+### Requirements
+    
+    node > 8
+    yarn
+    postgres
+    
+### PreTables
+
+    CREATE TABLE hdata ( id CHARACTER VARYING(1024) NOT NULL, storage JSON)
+    INSERT INTO hdata VALUES(1, NULL)
+     
 ### Running Locally
 
     clone the repo
