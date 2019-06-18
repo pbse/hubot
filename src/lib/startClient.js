@@ -3,6 +3,8 @@ const {google} = require('googleapis');
 const {createJSON, findDifference} = require("../util/util");
 const {logger} = require("../util/logger");
 const SHEET_VERSION = 'v4';
+const sheetId = process.env.SHEET_ID;
+const sheetRangeName = process.env.SHEET_RANGENAME;
 
 const startClient = ({client, robot, res, auth}) => {
   const sheets = google.sheets({
@@ -10,13 +12,10 @@ const startClient = ({client, robot, res, auth}) => {
     auth
   });
 
-  const sheetId = '1YbMIv7meSAvBr7_EpMILShWGxiu4l__2SDevSq7AAuk';
-  const rangeName = 'Sheet1';
-
   return new Promise((resolve, reject) => {
     sheets.spreadsheets.values.get({
       spreadsheetId: sheetId,
-      range: rangeName,
+      range: sheetRangeName,
     }, (err, {data}) => {
       if (err) {
         logger.error(`The API Returned error with error - ${err}`);

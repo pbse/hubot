@@ -19,12 +19,12 @@ const startSchedule = ({client, robot, res, auth}) => {
 module.exports = function(robot) {
 
   if (!client_id || !client_secret || !redirect_uri) {
-    throw new Error("Sheet Creds are Missing")
+    throw new Error("Sheet Creds are Missing, Aborting")
   }
   const client = connectToDB();
   const googleSheetClient = new GoogleSheet({client_id, client_secret, redirect_uri});
 
-  robot.hear(/read sheet (.*)/i, (res) => {
+  robot.hear(/read sheet/i, (res) => {
     res.send("Ok, Starting to query google sheet. Will report for any change.");
     googleSheetClient.authorize()
       .then(_boolData => startSchedule({client, robot, res, auth: googleSheetClient.oAuth2Client}))

@@ -1,11 +1,33 @@
 const _ = require('lodash');
 const diff = require('deep-diff').diff;
+const util = require('util');
 
 const findDifference = (oldData, newData) => {
   if(_.isEqual(oldData, newData)) {
     return false;
   }
-  return diff(oldData, newData);
+  const difference = diff(oldData, newData);
+  const out = [];
+  //console.log(difference);
+  for (let diff of difference ) {
+    switch(diff.kind) {
+      case 'E' :
+        out.push(`The Path ${diff.path} Was Updated. Old Value - ${diff.lhs}, New Value -  ${diff.rhs}`);
+        break;
+      case 'A' :
+        out.push(`The Path Array ${diff.path} was Changed with value ${util.inspect(diff.item)}`)
+        break;
+      case 'D' :
+        out.push(`The Path ${diff.path} was deleted - Old Value ${diff.lhs || diff.rhs}`)
+        break;
+      case 'N' :
+        out.push(`The Path ${diff.path} was added - new Value ${diff.lhs || diff.rhs}`)
+        break;
+      default :
+        break;
+    }
+  };
+  return out;
 };
 
 const createJSON = (data) => {
