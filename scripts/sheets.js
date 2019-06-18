@@ -13,7 +13,7 @@ const startSchedule = ({client, robot, res, auth}) => {
       .then(() => startClient({client, robot, res, auth}))
       .then(() => startSchedule({client, robot, res, auth}))
       .catch(err => logger.debug(err));
-  }, 5000)
+  }, 2000)
 };
 
 module.exports = function(robot) {

@@ -1,2 +1,2 @@
 #!/bin/sh
-HUBOT_SLACK_TOKEN=xxxxxxxxxx hubot --adapter slack
+HUBOT_SLACK_TOKEN=xxxxxxxxxxxxxxxx hubot --adapter slack
