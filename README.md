@@ -1,6 +1,6 @@
 # Hubot Google Sheet Reader
 
-Create a hubot using Node that connects into a Google sheet every 5 minutes and detects changes to syncs to a Postgres instance. Once the sync is complete it should message on Slack any updates that were made.
+This builds a hubot that connects into a Google sheet every 5 minutes and detects changes to syncs to a Postgres instance. Once the sync is complete it messages on Slack any updates that were made.
 
 ### Requirements
     
